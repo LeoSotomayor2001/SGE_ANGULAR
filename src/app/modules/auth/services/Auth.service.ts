@@ -30,6 +30,13 @@ export class AuthService {
       .post(`${this.url}/login`, body)
       .pipe(map((resp) => this.handleAuthSuccess(resp)));
   }
+
+  register(email:string, password:string, name:string,apellido:string,telefono:string,direccion:string,cedula:string,password_confirmation:string,ciudad:string ){
+    let body={email, password, name,apellido,telefono,direccion,cedula,password_confirmation,ciudad }
+
+    return this.http.post(`${this.url}/register/representante`,body)
+  }
+
   //TODO: CREAR UNA INTERFACE DE AUTHRESPONSE
   private handleAuthSuccess(resp: any) {
     if(resp.user) this._user = resp.user;
