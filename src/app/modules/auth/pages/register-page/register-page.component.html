@@ -1,0 +1,260 @@
+<div
+  class="absolute inset-x-4 top-0 transform -translate-y-1/2 bg-gradient-to-r from-indigo-900 via-purple-800 to-pink-700 text-white px-4 py-2 rounded-t-lg"
+>
+  <h1 class="text-2xl font-bold text-center">Registro de Representante</h1>
+</div>
+
+<form
+  class="bg-white p-6 rounded-lg shadow-xl mt-2 dark:bg-gray-800 dark:shadow-none dark:border dark:border-gray-700"
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+>
+  <div class="mt-4">
+      <h2 class="text-center text-xl font-bold text-white uppercase">Informacion Personal</h2>
+    <div class="grid grid-cols-2 gap-2">
+
+        <div>
+          <label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+            for="name"
+          >
+            Nombre
+          </label>
+          <input
+            id="name"
+            type="name"
+            formControlName="name"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+            [class.border-red-500]="formUtils.isValidField(registerForm, 'name')"
+          />
+          <div
+            *ngIf="formUtils.isValidField(registerForm, 'name')"
+            class="text-red-500 text-xs mt-1"
+          >
+            {{ formUtils.getFieldError(registerForm, "name") }}
+          </div>
+          <app-error-message [errors]="backendErrors['email']"></app-error-message>
+        </div>
+    
+        <div>
+          <label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+            for="apellido"
+          >
+            Apellido
+          </label>
+          <input
+            id="apellido"
+            type="apellido"
+            formControlName="apellido"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+            [class.border-red-500]="
+              formUtils.isValidField(registerForm, 'apellido')
+            "
+          />
+        <div
+        *ngIf="formUtils.isValidField(registerForm, 'apellido')"
+        class="text-red-500 text-xs mt-1"
+          >
+            {{ formUtils.getFieldError(registerForm, "apellido") }}
+          </div>
+          <app-error-message
+            [errors]="backendErrors['apellido']"
+          ></app-error-message>
+        </div>
+    </div>
+     <h2 class="text-center text-xl font-bold text-white uppercase">Contacto</h2>
+    <div class="grid grid-cols-2 gap-2">
+     <div class="my-2">
+      <label
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+        for="telefono"
+      >
+        Telefono
+      </label>
+      <input
+        id="telefono"
+        type="telefono"
+        formControlName="telefono"
+        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+        [class.border-red-500]="
+          formUtils.isValidField(registerForm, 'telefono')
+        "
+      />
+      <div
+        *ngIf="formUtils.isValidField(registerForm, 'telefono')"
+        class="text-red-500 text-xs mt-1"
+      >
+        {{ formUtils.getFieldError(registerForm, "telefono") }}
+      </div>
+      <app-error-message
+        [errors]="backendErrors['telefono']"
+      ></app-error-message>
+    </div>
+
+    <div class="my-2">
+      <label
+        class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+        for="email"
+      >
+        Correo Electrónico
+      </label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+        [class.border-red-500]="formUtils.isValidField(registerForm, 'email')"
+      />
+      <div
+        *ngIf="formUtils.isValidField(registerForm, 'email')"
+        class="text-red-500 text-xs mt-1"
+      >
+        {{ formUtils.getFieldError(registerForm, "email") }}
+      </div>
+      <app-error-message [errors]="backendErrors['email']"></app-error-message>
+    </div>
+    </div>
+
+    <h2 class="text-center text-xl font-bold text-white uppercase">Ubicacion</h2>
+    <div class="grid grid-cols-2 gap-2">
+
+        <div class="my-2">
+          <label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+            for="ciudad"
+          >
+            Ciudad
+          </label>
+          <input
+            id="ciudad"
+            type="ciudad"
+            formControlName="ciudad"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+            [class.border-red-500]="formUtils.isValidField(registerForm, 'ciudad')"
+          />
+          <div
+            *ngIf="formUtils.isValidField(registerForm, 'ciudad')"
+            class="text-red-500 text-xs mt-1"
+          >
+            {{ formUtils.getFieldError(registerForm, "ciudad") }}
+          </div>
+          <app-error-message [errors]="backendErrors['ciudad']"></app-error-message>
+        </div>
+    
+        <div class="my-2">
+          <label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+            for="direccion"
+          >
+            Direccion
+          </label>
+          <input
+            id="direccion"
+            type="direccion"
+            formControlName="direccion"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+            [class.border-red-500]="
+              formUtils.isValidField(registerForm, 'direccion')
+            "
+          />
+          <div
+            *ngIf="formUtils.isValidField(registerForm, 'direccion')"
+            class="text-red-500 text-xs mt-1"
+          >
+            {{ formUtils.getFieldError(registerForm, "direccion") }}
+          </div>
+          <app-error-message
+            [errors]="backendErrors['direccion']"
+          ></app-error-message>
+        </div>
+    </div>
+
+
+      <h2 class="text-center text-xl font-bold text-white uppercase">Seguridad</h2>
+    <div class="grid grid-cols-2 gap-2">
+
+        <div class="my-2">
+          <label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+            for="password"
+          >
+            Contraseña
+          </label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+            [class.border-red-500]="
+              formUtils.isValidField(registerForm, 'password')
+            "
+          />
+          <div
+            *ngIf="formUtils.isValidField(registerForm, 'password')"
+            class="text-red-500 text-xs mt-1"
+          >
+            {{ formUtils.getFieldError(registerForm, "password") }}
+          </div>
+          <app-error-message
+            [errors]="backendErrors['password']"
+          ></app-error-message>
+        </div>
+    
+        <div class="my-2">
+          <label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+            for="password_confirmation"
+          >
+            Contraseña
+          </label>
+          <input
+            id="password_confirmation"
+            type="password"
+            formControlName="password_confirmation"
+            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white"
+            [class.border-red-500]="
+              formUtils.isValidField(registerForm, 'password_confirmation')
+            "
+          />
+          <div
+            *ngIf="formUtils.isValidField(registerForm, 'password_confirmation')"
+            class="text-red-500 text-xs mt-1"
+          >
+            {{ formUtils.getFieldError(registerForm, "password") }}
+          </div>
+          <app-error-message
+            [errors]="backendErrors['password_confirmation']"
+          ></app-error-message>
+        </div>
+    </div>
+
+  </div>
+
+  <button
+    type="submit"
+    class="bg-gradient-to-r mt-2 from-indigo-900 via-purple-800 to-pink-700 w-full p-3 text-white uppercase font-bold rounded-lg transition-colors duration-200 hover:bg-indigo-700 cursor-pointer disabled:cursor-not-allowed disabled:bg-gray-400 disabled:opacity-50 dark:from-indigo-700 dark:via-purple-600 dark:to-pink-500 dark:hover:from-indigo-600 dark:hover:via-purple-500 dark:hover:to-pink-400"
+  >
+    <span *ngIf="isSubmitting" class="flex items-center justify-center">
+      <span
+        class="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"
+      ></span>
+      Ingresando...
+    </span>
+    <span>Registrarse</span>
+  </button>
+
+  <a
+    routerLink="/auth/login"
+    class="block text-center my-3 text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300"
+  >
+    ¿Ya tienes cuenta? Inicia Sesión.
+  </a>
+  <a
+    routerLink="/auth/recuperar-password"
+    class="block text-center my-3 text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300"
+  >
+    ¿Olvidaste tu contraseña? Recupérala aquí.
+  </a>
+</form>

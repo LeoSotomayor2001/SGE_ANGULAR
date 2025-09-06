@@ -1,0 +1,3 @@
+ <div *ngIf="errors && errors.length > 0" class="text-red-500 text-xs mt-1">
+      <span *ngFor="let err of errors">{{ err }}</span>
+    </div>
