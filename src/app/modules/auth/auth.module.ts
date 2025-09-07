@@ -6,12 +6,14 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from "../shared/shared.module";
+import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    WelcomeMessageComponent
   ],
   imports: [
     CommonModule,

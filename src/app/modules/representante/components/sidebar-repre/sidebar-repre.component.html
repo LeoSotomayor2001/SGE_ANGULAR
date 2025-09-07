@@ -1,0 +1,137 @@
+<aside
+  class="md:w-80 w-full md:shadow-xl shadow-md bg-white dark:bg-gray-700 h-screen"
+  aria-label="Sidebar"
+>
+ <div class="px-3 py-4">
+  <img
+    [src]="representante?.image | imagePipe"
+    alt=""
+    class="w-32 h-32 md:w-44 md:h-44 mb-4 rounded-full shadow-lg mx-auto"
+  />
+</div>
+  <h1 class="text-2xl font-bold text-center p-4">
+    {{ representante && representante?.name + ' ' + representante?.apellido }}
+  </h1>
+  <div class="h-full px-3 py-4 overflow-y-auto">
+    <ul class="space-y-4">
+      <li class="mb-2">
+        <a
+          [routerLink]="['/representante/inicio']"
+          routerLinkActive="bg-indigo-600 text-white"
+          class="flex items-center p-3 text-base font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-white transition-all duration-300 ease-in-out"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M2.25 12 11.204 3.045c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+          <span class="ml-4 text-xl">Inicio</span>
+        </a>
+      </li>
+
+      <!-- Perfil -->
+      <li class="mb-2">
+        <a
+          [routerLink]="['/representante/perfil']"
+          routerLinkActive="bg-indigo-600 text-white"
+          class="flex items-center p-3 text-base font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-white transition-all duration-300 ease-in-out"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+            />
+          </svg>
+          <span class="ml-4 text-xl">Perfil</span>
+        </a>
+      </li>
+
+      <!-- Estudiantes - Accordion -->
+      <li class="mb-2">
+        <div class="cursor-pointer" (click)="expanded = !expanded">
+          <div
+            class="flex items-center p-3 text-base font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-white transition-all duration-300 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+              />
+            </svg>
+            <span class="ml-4 text-xl">Estudiantes</span>
+            <span
+              class="ml-auto transform transition-transform"
+              [class.rotate-180]="expanded"
+            >
+              ▼
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="expanded" class="mt-2 pl-12 space-y-2">
+          <!-- Registrar Estudiante -->
+          <a
+            [routerLink]="['/representante/registro-estudiantes']"
+            routerLinkActive="bg-indigo-600 text-white"
+            class="block p-2 text-base font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-white transition-all duration-300 ease-in-out"
+          >
+            Registrar Estudiante
+          </a>
+
+          <!-- Estudiantes Inscritos -->
+          <a
+            [routerLink]="['/representante/estudiantes-inscritos']"
+            routerLinkActive="bg-indigo-600 text-white"
+            class="block p-2 text-base font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-white transition-all duration-300 ease-in-out"
+          >
+            Estudiantes Inscritos
+          </a>
+
+          <!-- Ver Notas -->
+          <a
+            [routerLink]="['/representante/notas-estudiantes']"
+            routerLinkActive="bg-indigo-600 text-white"
+            class="block p-2 text-base font-medium text-gray-700 dark:text-gray-300 rounded-lg hover:bg-indigo-600 hover:text-white dark:hover:bg-gray-700 dark:hover:text-white transition-all duration-300 ease-in-out"
+          >
+            Ver Notas de tus Estudiantes
+          </a>
+        </div>
+      </li>
+
+      <!-- Cerrar Sesión -->
+      <li class="mb-2">
+        <button
+          (click)="cerrarSesion()"
+          class="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+        >
+          <span>Cerrar Sesión</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</aside>

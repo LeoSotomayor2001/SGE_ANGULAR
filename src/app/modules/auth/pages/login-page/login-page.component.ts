@@ -53,8 +53,8 @@ export class LoginPageComponent {
         })
       )
       .subscribe((resp) => {
-        if (resp) {
-          console.log(resp);
+        if (resp && user_type==='representante') {
+          this.router.navigate(['/representante'])
         }
       });
   }
