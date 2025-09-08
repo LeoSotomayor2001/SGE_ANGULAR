@@ -9,18 +9,20 @@ import { Router } from '@angular/router';
 })
 export class SidebarRepreComponent {
    expanded: boolean = false;
-    onloading: boolean = false;
+  onloading: boolean = false;
   representante: any;
 
   constructor(private router: Router, private authService: AuthService) {
     
   }
    ngOnInit() {
+    this.onloading=true
     this.authService.checkStatus().subscribe((isAuthenticated) => {
       // El código aquí se ejecuta solo después de que la respuesta de la API ha llegado.
       if (isAuthenticated) {
         // Ahora es seguro acceder al representante
         this.representante = this.authService.representante;
+        this.onloading=false
       } else {
         console.log('El usuario no está autenticado.');
       }

@@ -5,10 +5,7 @@
     <a routerLink="/representante/registro-estudiantes" class="btn btn-primary text-xl">Registrar Estudiante</a>
   </div>
 
-  <div *ngIf="isLoading" class="flex flex-col items-center justify-center py-20 bg-white rounded-xl shadow border border-gray-200">
-    <div class="animate-spin rounded-full h-12 w-12 border-4 border-gray-500 border-t-transparent"></div>
-    <p class="mt-4 text-gray-600">Cargando estudiantes...</p>
-  </div>
+   <loading-spinner [loading]="isLoading"></loading-spinner>
 
   <div
     class="text-center py-20 bg-white rounded-xl shadow border border-gray-200"

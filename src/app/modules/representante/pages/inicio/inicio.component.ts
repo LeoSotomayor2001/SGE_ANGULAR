@@ -3,7 +3,7 @@ import { RepresentanteService } from '../../services/representante.service';
 import { AuthService } from '../../../auth/services/Auth.service';
 import { EstudianteRepresentante } from '../../interfaces/EstudianteRepresentate.interface';
 import { Representante } from '../../interfaces/Representante.interface';
-import { finalize, take, filter } from 'rxjs/operators'; // Importa el operador 'filter'
+import { finalize, take, filter } from 'rxjs/operators'; 
 
 @Component({
   selector: 'app-inicio',

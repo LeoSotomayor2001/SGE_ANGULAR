@@ -2,15 +2,18 @@
   class="md:w-80 w-full md:shadow-xl shadow-md bg-white dark:bg-gray-700 h-screen"
   aria-label="Sidebar"
 >
- <div class="px-3 py-4">
-  <img
-    [src]="representante?.image | imagePipe"
-    alt=""
-    class="w-32 h-32 md:w-44 md:h-44 mb-4 rounded-full shadow-lg mx-auto"
-  />
-</div>
-  <h1 class="text-2xl font-bold text-center p-4 text-black">
-    {{ representante && representante?.name + ' ' + representante?.apellido }}
+  <div class="px-3 py-4" *ngIf="!onloading">
+    <img
+      [src]="representante?.image | imagePipe"
+      alt=""
+      class="w-32 h-32 md:w-44 md:h-44 mb-4 rounded-full shadow-lg mx-auto"
+    />
+  </div>
+
+  <loading-spinner [loading]="onloading"></loading-spinner>
+
+  <h1 class="text-2xl font-bold text-center p-4 text-black" *ngIf="!onloading">
+    {{ representante && representante?.name + " " + representante?.apellido }}
   </h1>
   <div class="h-full px-3 py-4 overflow-y-auto">
     <ul class="space-y-4">
