@@ -10,6 +10,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { EstudiantesInscritosComponent } from './pages/estudiantes-inscritos/estudiantes-inscritos.component';
 import { RegistroEstudiantesComponent } from './pages/registro-estudiantes/registro-estudiantes.component';
 import { NotasEstudiantesComponent } from './pages/notas-estudiantes/notas-estudiantes.component';
+import { EstudianteCardComponent } from './components/estudiante-card/estudiante-card.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NotasEstudiantesComponent } from './pages/notas-estudiantes/notas-estud
     PerfilComponent,
     EstudiantesInscritosComponent,
     RegistroEstudiantesComponent,
-    NotasEstudiantesComponent
+    NotasEstudiantesComponent,
+    EstudianteCardComponent
   ],
   imports: [
     CommonModule,

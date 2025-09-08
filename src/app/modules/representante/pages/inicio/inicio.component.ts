@@ -1,40 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RepresentanteService } from '../../services/representante.service';
 import { AuthService } from '../../../auth/services/Auth.service';
 import { EstudianteRepresentante } from '../../interfaces/EstudianteRepresentate.interface';
 import { Representante } from '../../interfaces/Representante.interface';
-import { Subscription } from 'rxjs';
+import { finalize, take, filter } from 'rxjs/operators'; // Importa el operador 'filter'
 
 @Component({
   selector: 'app-inicio',
   standalone: false,
   templateUrl: './inicio.component.html',
 })
-export class InicioComponent {
+export class InicioComponent  {
+  public isLoading: boolean = true;
   estudiantes: EstudianteRepresentante[] = [];
   private id: Representante['id'] = 0;
-  private subscription: Subscription;
 
   constructor(
     private representanteService: RepresentanteService,
     private authService: AuthService
   ) {
-    this.subscription = this.authService.representante$.subscribe(
+    // Corrige el flujo: espera un valor no nulo antes de tomarlo
+    this.authService.representante$.pipe(
+      filter(representante => !!representante), // 1. Espera a que el valor no sea null
+      take(1) // 2. Toma el primer valor válido y se desuscribe
+    ).subscribe(
       (representante) => {
-        if (representante) {
-          this.id = representante.id;
-          this.getEstudiantes();
-        }
+        this.id = representante.id;
+        this.getEstudiantes();
       }
     );
   }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
+  
   private getEstudiantes() {
-    this.representanteService.getEstudiantes(this.id).subscribe((resp) => {
+    this.isLoading = true;
+    this.representanteService.getEstudiantes(this.id).pipe(
+      finalize(() => this.isLoading = false)
+    ).subscribe((resp) => {
       if (resp) {
         this.estudiantes = resp.estudiantes;
       }
